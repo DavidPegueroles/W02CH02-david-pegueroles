@@ -22,4 +22,16 @@ describe("Given a strictEquals function", () => {
       expect(result).toBe(expectedResult);
     });
   });
+
+  describe("When it receives two NaN", () => {
+    test("Then it should return false", () => {
+      // Arrange
+      const value = NaN;
+      const expectedResult = false;
+      // Act
+      const result = strictEquals(value, value);
+      // Assert
+      expect(result).toBe(expectedResult);
+    });
+  });
 });
