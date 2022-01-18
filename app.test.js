@@ -3,7 +3,7 @@ const strictEquals = (a, b) => {
     return true;
   } else if (Object.is(a, b) && isNaN(a, b)) {
     return false;
-  } else if (a > -1 && a < 1 && b > -1 && b < 1) {
+  } else if (a >= 0 && a <= 0 && b >= 0 && b <= 0) {
     return true;
   } else {
     return false;
