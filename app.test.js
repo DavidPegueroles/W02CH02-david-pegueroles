@@ -3,8 +3,10 @@ const strictEquals = (a, b) => {
     return true;
   } else if (Object.is(a, b) && isNaN(a, b)) {
     return false;
-  } else {
+  } else if (!Object.is(a, b) && isNaN(a, b)) {
     return false;
+  } else {
+    return true;
   }
 };
 
@@ -30,6 +32,19 @@ describe("Given a strictEquals function", () => {
       const expectedResult = false;
       // Act
       const result = strictEquals(value, value);
+      // Assert
+      expect(result).toBe(expectedResult);
+    });
+  });
+
+  describe("When it receives values '0,-0'", () => {
+    test("Then it should return true", () => {
+      // Arrange
+      const a = 0;
+      const b = -0;
+      const expectedResult = true;
+      // Act
+      const result = strictEquals(a, b);
       // Assert
       expect(result).toBe(expectedResult);
     });
